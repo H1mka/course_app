@@ -1,0 +1,21 @@
+.AppContent {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 1 auto;
+    max-width: 1110px;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+footer {
+    flex: 0 0 auto;
+    max-width: 1110px;
+    width: 100vw;
+    margin: 0 auto;
+}
