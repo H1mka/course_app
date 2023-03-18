@@ -13,12 +13,33 @@ const VideoBlock = (props) => {
           let hls = new Hls();
           hls.loadSource(videoUrl)
           hls.attachMedia(videoRef.current)
-          console.log(videoRef.current)
         }
       }, [])
+
+      useEffect(() => {
+        // Зберігмаємо прогресс
+        const saveProgressInterval = setInterval(() => {
+          localStorage.setItem(`videoProgress-${props.lessonId}`, videoRef.current.currentTime)
+          console.log('save')
+        }, 5000)
+        
+        // Отримуємо прогресс відео
+        const videoProgress = localStorage.getItem(`videoProgress-${props.lessonId}`);
+        if(videoProgress) {
+          videoRef.current.currentTime = videoProgress;
+        }
+
+        const clearInter = () => clearInterval(saveProgressInterval);
+        videoRef.current.addEventListener('ended', clearInter)
+
+        return function() {
+          clearInterval(saveProgressInterval);
+        }
+      }, [])
+
     return (
         <div>
-            <video ref={videoRef} controls style={ {...props.style} } autoPlay onLoadCapture='321312'></video>
+            <video poster={props.posterLink} ref={videoRef} controls style={ {...props.style} }></video>
         </div>
     )
 }

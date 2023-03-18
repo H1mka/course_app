@@ -1,0 +1,28 @@
+.accordeonItem {
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+    border: 0.3px solid grey;
+    /* border-radius: 4px; */
+    .accordeonCaption {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 500;
+    }
+    .accordeonToggle {
+        height: 0px;
+        transition: 
+            height 0.1s ease-in-out;
+        overflow: hidden;
+    }
+    img {
+        width: 30px;
+    }
+}
+
+.lockItem {
+    background-color: #8a8888;
+    pointer-events: none;
+}

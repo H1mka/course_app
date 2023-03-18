@@ -16,6 +16,7 @@ function AppContent() {
         <Routes>
           <Route path = '/' element = { <MainPage /> }/>
           <Route path = '/course/:courseId' element = { <CourseDetailPage /> }/>
+          <Route path = '*' element = { <MainPage /> }/>
         </Routes>
       </main>
 

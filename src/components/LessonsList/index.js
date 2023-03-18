@@ -1,19 +1,25 @@
 import LessonsItem from 'components/LessonsItem'
 
-const LessonsList = () => {
-    // console.log('course', curse.id)
+const LessonsList = ({lessonsInfo}) => {
     
     return (
         <div>
-            {/* {lessons.map(item => {
-                // console.log(item.meta.skills)
+            <br/><br/><br/><br/><br/><br/>
+            {/* Використовую фильтр, щоб не виводити уроки з типом 'article', в тз сказано тільки про відео */}
+            {/* {lessonsInfo.filter(item => item.type === "video").map((item, index) => {
                 return <LessonsItem 
-                    item = {item}
+                    lesson = {item}
+                    lessonIndex = {index + 1}
+                    key = {item.id}
                 />
             })} */}
-            {/* <LessonsItem 
-                videoUrl = {'https://wisey.app/videos/lack-of-motivation-how-to-overcome-it/preview/AppleHLS1/preview.m3u8'}
-            /> */}
+            {lessonsInfo.map(item => {
+                return <LessonsItem 
+                    lesson = {item}
+                    key = {item.id}
+                />
+            })}
+            <br/><br/><br/><br/><br/>
         </div>
     )
 }

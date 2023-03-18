@@ -31,12 +31,11 @@ const CourseDetailPage = () => {
                 <h2>{course.description}</h2>
                 <VideoBlock 
                     url = {course.meta.courseVideoPreview.link} 
+                    // posterLink = {`${course.previewImageLink}/cover.webp`}
                     style = {{
                         width: '100%',
-
                     }}
                 />
-                <LessonsList />
                 <div className={styles.blocks}>
                     <IconBlock 
                         svg = {rocket}
@@ -47,6 +46,9 @@ const CourseDetailPage = () => {
                         text = {course.rating}
                     />
                 </div>
+                <LessonsList 
+                    lessonsInfo = {course.lessons}
+                />
             </>
             }
         </div>
