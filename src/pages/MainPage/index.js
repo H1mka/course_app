@@ -31,8 +31,6 @@ const MainPage = () => {
     // console.log(courses.length)
     useEffect(() => {
         if(needUpload) {
-            console.log('one time')
-            console.log(sliceCount)
             if(sliceCount + 2 > courses.length) setSliceCount(courses.length);
             else setSliceCount(prevent => prevent += 2);
 
@@ -56,7 +54,6 @@ const MainPage = () => {
             <h1>Our Courses</h1>
             
             {/* Використовую reverse, щоб останній курс був самим першим у списку */}
-            {console.log('slice', sliceCount)}
             { courses.length > 0 && <CourseList courses = {courses.slice(courses.length - sliceCount).reverse()}/> }
         </div>
     )
