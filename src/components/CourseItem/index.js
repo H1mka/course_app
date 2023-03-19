@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import IconBlock from 'components/IconBlock'
-import SkillsList from 'components/SkillsList/SkillsList'
+import SkillsList from 'components/SkillsList'
 
 import rocket from 'assets/icons/rocket-solid.svg'
 import starSvg from 'assets/icons/star-regular.svg'

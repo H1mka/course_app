@@ -61,6 +61,8 @@ const LessonsItem = ({lesson}) => {
                                 maxHeight: '500px'
                             }}
                         />
+                        <div>Use CTRL + ArrowUp to speed up the video</div>
+                        <div>Use CTRL + DownUp to slow down the video</div>
                     </>
                 }
             </div>

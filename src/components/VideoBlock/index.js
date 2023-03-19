@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react';
 import Hls from 'hls.js';
 
 const VideoBlock = (props) => {
-    const {url, lessonId, style, ...otherProps} = props;
+    const {url = null, lessonId, style, ...otherProps} = props;
     const customAtributes = {...otherProps}
-
+    const videoSpeedUp = 0.25;                                // Зміна швидкості відео
     const videoRef = useRef();
     let videoUrl = `${url}`;
 
@@ -20,10 +20,12 @@ const VideoBlock = (props) => {
       }, [])
 
       useEffect(() => {
-        // Зберігмаємо прогресс
+        // Прогрес зберігається, якщо відео не на паузі
         const saveProgressInterval = setInterval(() => {
-          localStorage.setItem(`videoProgress-${lessonId}`, videoRef.current.currentTime)
-          console.log('save')
+          if(!videoRef.current.paused) {
+            localStorage.setItem(`videoProgress-${lessonId}`, videoRef.current.currentTime)
+            console.log('save')
+          }
         }, 5000)
         
         // Отримуємо прогресс відео
@@ -35,15 +37,23 @@ const VideoBlock = (props) => {
         const clearInter = () => clearInterval(saveProgressInterval);
         videoRef.current.addEventListener('ended', clearInter)
 
+        // Зміна швидкості відео, швидкість не більше 2, не меньше 0.25
+        const speedChange = (event) => {
+          if(event.code === 'ArrowUp' && event.ctrlKey && videoRef.current.playbackRate < 2) 
+              videoRef.current.playbackRate += videoSpeedUp
+          else if(event.code === 'ArrowDown' && event.ctrlKey && videoRef.current.playbackRate > 0.25)
+              videoRef.current.playbackRate -= videoSpeedUp
+        }
+        document.addEventListener('keydown', speedChange)
+
         return function() {
           clearInterval(saveProgressInterval);
+          document.removeEventListener('keydown', speedChange)
         }
       }, [])
 
     return (
-        // <div>
-            <video ref={videoRef} controls style={ {...style} } {...customAtributes}></video>
-        // </div>
+        <video ref={videoRef} controls style={ {...style} } {...customAtributes}></video>
     )
 }
 

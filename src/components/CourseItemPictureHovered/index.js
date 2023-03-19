@@ -9,10 +9,10 @@ const CourseItemPictureHovered = ({sourceImage, sourceVideo, parentRef = null}) 
     let videoUrl = `${sourceVideo}`;
 
     useEffect(() => {
-        if(videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+        if(videoRef.current.canPlayType('application/vnd.apple.mpegurl') && sourceVideo) {
           videoRef.current.src = videoUrl;
         }
-        else if(Hls.isSupported()) {
+        else if(Hls.isSupported() && sourceVideo) {
           let hls = new Hls();
           hls.loadSource(videoUrl)
           hls.attachMedia(videoRef.current)
@@ -34,11 +34,11 @@ const CourseItemPictureHovered = ({sourceImage, sourceVideo, parentRef = null}) 
     return (
         <div className={styles.imagePreviewWrapper}>
             {videoUrl && 
-            <video 
-                ref={videoRef} 
-                muted
-                autoPlay
-            />
+                <video 
+                    ref={videoRef} 
+                    muted
+                    autoPlay
+                />
             }
             <img 
                 className={`${styles.img} 
