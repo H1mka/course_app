@@ -1,7 +1,7 @@
 .accordeonItem {
     padding: 10px;
     font-size: 18px;
-    color: #333;
+    color: var(--darkText);
     border: 0.3px solid grey;
     /* border-radius: 4px; */
     .accordeonCaption {
@@ -23,6 +23,6 @@
 }
 
 .lockItem {
-    background-color: #8a8888;
+    background-color: var(--accordeonLockItem);
     pointer-events: none;
 }

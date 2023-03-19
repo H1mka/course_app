@@ -3,7 +3,8 @@ import styles from './styles.module.scss'
 const Footer = () => {
     return (
         <footer>
-            <p>Footer</p>
+            <div>Terms of Use · Privacy Policy</div>
+            <div className={styles.copyright}>&copy; 2016 Genesis School</div>
         </footer>
     )
 }

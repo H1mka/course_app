@@ -1,11 +1,18 @@
 .detailWrapper {
-
-    h1 {
-        color: var(--darkText)
-    }
+    text-align: left;
+    color: var(--darkText);
+    font-weight: 500;
     h2 {
         font-size: 22px;
-        color: #6F6D6D;
+        color: var(--greyText);
         margin-bottom: 30px;
     }
+    .skillsList {
+        font-size: 20px;
+        margin: 20px;
+        ul {
+            margin-top: 0;
+        }
+    }
+    
 }

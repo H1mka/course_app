@@ -2,8 +2,11 @@ import { useEffect, useRef } from 'react';
 import Hls from 'hls.js';
 
 const VideoBlock = (props) => {
+    const {url, lessonId, style, ...otherProps} = props;
+    const customAtributes = {...otherProps}
+
     const videoRef = useRef();
-    let videoUrl = `${props.url}`;
+    let videoUrl = `${url}`;
 
     useEffect(() => {
         if(videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
@@ -19,12 +22,12 @@ const VideoBlock = (props) => {
       useEffect(() => {
         // Зберігмаємо прогресс
         const saveProgressInterval = setInterval(() => {
-          localStorage.setItem(`videoProgress-${props.lessonId}`, videoRef.current.currentTime)
+          localStorage.setItem(`videoProgress-${lessonId}`, videoRef.current.currentTime)
           console.log('save')
         }, 5000)
         
         // Отримуємо прогресс відео
-        const videoProgress = localStorage.getItem(`videoProgress-${props.lessonId}`);
+        const videoProgress = localStorage.getItem(`videoProgress-${lessonId}`);
         if(videoProgress) {
           videoRef.current.currentTime = videoProgress;
         }
@@ -38,9 +41,9 @@ const VideoBlock = (props) => {
       }, [])
 
     return (
-        <div>
-            <video poster={props.posterLink} ref={videoRef} controls style={ {...props.style} }></video>
-        </div>
+        // <div>
+            <video ref={videoRef} controls style={ {...style} } {...customAtributes}></video>
+        // </div>
     )
 }
 

@@ -10,13 +10,11 @@ const MainPage = () => {
     const [courses, setCourses] = useState([]);
     const [needUpload, setNeedUpload] = useState(false);
     const [sliceCount, setSliceCount] = useState(10)                    // Останні 10 курсів
-    const [coursesLenght, setCoursesLenght] = useState(0)
 
     useEffect(() => {
         getCourses()
             .then(response => {
                 setCourses(response.data.courses)
-                setCoursesLenght(response.data.courses.length)
             })
             .catch(er => console.log(er))
     }, [])
