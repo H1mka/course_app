@@ -26,7 +26,6 @@ const MainPage = () => {
         }
     })
 
-    // console.log(courses.length)
     useEffect(() => {
         if(needUpload) {
             if(sliceCount + 2 > courses.length) setSliceCount(courses.length);
@@ -40,8 +39,6 @@ const MainPage = () => {
         const scrollHeight = event.target.documentElement.scrollHeight,
         scrollTop = event.target.documentElement.scrollTop,
         innerHeight = window.innerHeight;
-        // console.log('length', courses.length)
-        // console.log('SliceCount', sliceCount)
         if( scrollHeight - (scrollTop + innerHeight) < 100 && courses.length > sliceCount) {
             setNeedUpload(true)
         }
