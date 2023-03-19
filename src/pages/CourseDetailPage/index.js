@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 
 import LessonsList from "components/LessonsList";
 import IconBlock from "components/IconBlock";
-import VideoBlock from "components/videoBlock";
+import VideoBlock from "components/VideoBlock";
+import SkillsList from "components/SkillsList/SkillsList";
+import DateView from "components/DateView";
 
 import getCourse from "services/getCourse";
 
@@ -22,7 +24,6 @@ const CourseDetailPage = () => {
             .catch(err => console.log(err))
     }, [])
 
-    console.log(course)
     return (
         <div className={styles.detailWrapper}>
             {course && <>
@@ -36,7 +37,7 @@ const CourseDetailPage = () => {
                         width: '100%',
                     }}
                 />
-                <div className={styles.blocks}>
+                {/* <div className={styles.blocks}>
                     <IconBlock 
                         svg = {rocket}
                         text = {`${course.lessons.length} lessons`}
@@ -44,6 +45,15 @@ const CourseDetailPage = () => {
                     <IconBlock 
                         svg = {starSvg}
                         text = {course.rating}
+                    />
+                </div> */}
+                <DateView 
+                    date = {course.launchDate}
+                />
+                <div className={styles.skillsList}>
+                    <p>Skills: </p>
+                    <SkillsList 
+                        list = {course.meta.skills}
                     />
                 </div>
                 <LessonsList 

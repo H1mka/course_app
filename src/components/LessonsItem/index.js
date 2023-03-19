@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import shevron from 'assets/icons/chevron-down-solid.svg';
 import lock from 'assets/icons/lock-solid.svg'
-import VideoBlock from "components/videoBlock";
+import VideoBlock from "components/VideoBlock";
 
 import styles from './styles.module.scss'
 
@@ -12,6 +12,8 @@ const LessonsItem = ({lesson}) => {
 
     useEffect(() => {
         setHeightEl(`${refHeight.current.scrollHeight}px`);
+
+        // Коли type уроку не "video", урок буде недоступним
         if(lesson.status === 'unlocked' && lesson.type === "video") {
             setStatus(true)
         }
@@ -51,7 +53,7 @@ const LessonsItem = ({lesson}) => {
                     <>
                         <VideoBlock 
                             url = {lesson.link}
-                            posterLink = {`${lesson.previewImageLink}/lesson-${lesson.order}.webp`}
+                            poster = {`${lesson.previewImageLink}/lesson-${lesson.order}.webp`}
                             lessonId = {lesson.id}
                             style = {{
                                 maxWidth: '100%',
@@ -59,7 +61,6 @@ const LessonsItem = ({lesson}) => {
                                 maxHeight: '500px'
                             }}
                         />
-                        <p>{lesson.title}</p>
                     </>
                 }
             </div>

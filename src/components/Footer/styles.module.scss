@@ -1,5 +1,17 @@
 footer {
-    margin-top: 100px;
-    min-height: 10vh;
-    border: 1px solid black;
+    width: 100%;
+    min-height: 15vh;
+    background-color: #051120;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .copyright {
+        font-size: 18px;
+        color: #404751  ;
+    }
 }
+

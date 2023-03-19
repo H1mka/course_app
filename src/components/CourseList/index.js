@@ -1,21 +1,12 @@
 import styles from './styles.module.scss'
 import CourseItem from 'components/CourseItem';
 
-const CourseList = ({courses}) => {
-    // console.log('course', curse.id)
-    
+const CourseList = ({courses}) => {    
     return (
         <div className={styles.courseList}>
             {courses.map(item => {
-                // console.log(item.meta.skills)
                 return <CourseItem 
-                    headline = {item.title}
-                    image = {item.previewImageLink}
-                    courseHeadline = {item.description}
-                    lessonsCount = {item.lessonsCount}
-                    skills = {item.meta.skills}
-                    rating = {item.rating}
-                    id = {item.id}
+                    item = {item}
                     key = {item.id}
                 />
             })}
